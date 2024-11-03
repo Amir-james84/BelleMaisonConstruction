@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Belle Maison Construction</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Additional styles for the projects page */
+        .video-section {
+            margin: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-description {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none; /* Hide all images by default */
+        }
+
+        .carousel img.active {
+            display: block; /* Only show the active image */
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-controls {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .carousel-button {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="assets/images/IconForHome.jpg" alt="Logo" class="navbar-icon">
+        <h2>Belle Maison Construction</h2>
+        <nav>
+            <a href="index.html" id="home-link">Home</a>
+            <a href="Projects.html">Projects</a>
+        </nav>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 style="color:white;">Our Projects</h1>
+        <p style="color: white;">Welcome to our projects page! Here you will find a showcase of our completed projects.</p>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>Home Renovation Video</h2>
+            <div class="video-container">
+                <video controls>
+                    <source src="assets/Videos/Video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class=" project-description">
+                <p>
+ Watch our team in action as we remodel and restore homes with precision and care. Each step of our process is designed to ensure a seamless and stress-free experience for our clients.
+                </p>
+            </div>
+        </div>
+
+        <!-- Kitchen Remodeling Carousel -->
+        <div class="section">
+            <h2>Kitchen Remodeling</h2>
+            <div class="carousel">
+                <img src="assets/Images/Image01.jpg" alt="Kitchen 1" class="active">
+                <img src="assets/Images/Image02.jpg" alt="Kitchen 2">
+                <img src="assets/Images/Image03.jpg" alt="Kitchen 3">
+                <img src="assets/Images/Image04.jpg" alt="Kitchen 4">
+                <img src="assets/Images/Image05.jpg" alt="Kitchen 5">
+                <img src="assets/Images/Image06.jpg" alt="Kitchen 6">
+                <div class="carousel-controls">
+                    <button class="carousel-button prev" id="prev-kitchen">‹</button>
+                    <button class="carousel-button next" id="next-kitchen">›</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scaffolding Carousel -->
+        <div class="section">
+            <h2>Scaffolding Projects</h2>
+            <div class="carousel">
+                <img src="assets/Images/Image09.jpg" alt="Scaffolding 1" class="active">
+                <img src="assets/Images/Image10.jpg" alt="Scaffolding 2">
+                <img src="assets/Images/Image11.jpg" alt="Scaffolding 3">
+                <div class="carousel-controls">
+                    <button class="carousel-button prev" id="prev-scaffolding">‹</button>
+                    <button class="carousel-button next" id="next-scaffolding">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Belle Maison Construction</p>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const kitchenCarousel = document.querySelectorAll('.carousel')[0];
+            const scaffoldingCarousel = document.querySelectorAll('.carousel')[1];
+    
+            const kitchenImages = kitchenCarousel.querySelectorAll('img');
+            const scaffoldingImages = scaffoldingCarousel.querySelectorAll('img');
+    
+            let kitchenCurrentIndex = 0;
+            let scaffoldingCurrentIndex = 0;
+    
+            const kitchenPrevButton = document.getElementById('prev-kitchen');
+            const kitchenNextButton = document.getElementById('next-kitchen');
+            const scaffoldingPrevButton = document.getElementById('prev-scaffolding');
+            const scaffoldingNextButton = document.getElementById('next-scaffolding');
+    
+            // Function to update carousel display
+            function updateCarousel(images, currentIndex) {
+                images.forEach((img, index) => {
+                    img.classList.toggle('active', index === currentIndex);
+                });
+            }
+    
+            // Kitchen Carousel Controls
+            kitchenPrevButton.addEventListener('click', () => {
+                kitchenCurrentIndex = (kitchenCurrentIndex - 1 + kitchenImages.length) % kitchenImages.length;
+                updateCarousel(kitchenImages, kitchenCurrentIndex);
+            });
+    
+            kitchenNextButton.addEventListener('click', () => {
+                kitchenCurrentIndex = (kitchenCurrentIndex + 1) % kitchenImages.length;
+                updateCarousel(kitchenImages, kitchenCurrentIndex);
+            });
+    
+            // Scaffolding Carousel Controls
+            scaffoldingPrevButton.addEventListener('click', () => {
+                scaffoldingCurrentIndex = (scaffoldingCurrentIndex - 1 + scaffoldingImages.length) % scaffoldingImages.length;
+                updateCarousel(scaffoldingImages, scaffoldingCurrentIndex);
+            });
+    
+            scaffoldingNextButton.addEventListener('click', () => {
+                scaffoldingCurrentIndex = (scaffoldingCurrentIndex + 1) % scaffoldingImages.length;
+                updateCarousel(scaffoldingImages, scaffoldingCurrentIndex);
+            });
+    
+            // Initial display of first images in each carousel
+            updateCarousel(kitchenImages, kitchenCurrentIndex);
+            updateCarousel(scaffoldingImages, scaffoldingCurrentIndex);
+        });
+    </script>
+    
+</body>
+</html>
